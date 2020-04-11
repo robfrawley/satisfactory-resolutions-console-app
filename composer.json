@@ -1,0 +1,53 @@
+{
+    "name": "robfrawley/satisfactory-resolutions-console-app",
+    "license": "MIT",
+    "type": "project",
+    "homepage": "https://src.run/satisfactory-resolutions-console-app",
+    "description": "Displays and filters the x and y resolution values and their ratio for the game Satisfactory.",
+    "support": {
+        "email": "rmf@src.run",
+        "issues": "https://src.run/satisfactory-resolutions-console-app/issues",
+        "source": "https://src.run/satisfactory-resolutions-console-app/git"
+    },
+    "keywords": [ "satisfactory-resolutions-console-app", "satisfactory", "resolutions", "console", "app", "rmf", "src-run" ],
+    "authors": [
+        {
+            "name": "Rob Frawley 2nd",
+            "email": "rmf@src.run",
+            "homepage": "https://src.run/rmf",
+            "role": "Project Lead"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "symfony/console": "^5.0",
+        "symfony/filesystem": "^5.0",
+        "symfony/finder": "^5.0",
+        "symfony/yaml": "^5.0"
+    },
+    "require-dev": {
+        "symfony/debug": "^4.4",
+        "symfony/phpunit-bridge": "^5.0",
+        "symfony/var-dumper": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Satisfactory\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Satisfactory\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
