@@ -1,0 +1,6 @@
+
+# [src-run] satisfactory-resolutions-console-app
+
+|       Travis-CI        |      Codacy Rating      |      Code Coverage      |        Style-CI         |         Release         |    API Documentation    |
+|:----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|
+| [![Travis](https://src.run/satisfactory-resolutions-console-app/travis.svg)](https://src.run/satisfactory-resolutions-console-app/travis) | [![Codacy](https://src.run/satisfactory-resolutions-console-app/codacy.svg)](https://src.run/satisfactory-resolutions-console-app/codacy) | [![Coveralls](https://src.run/satisfactory-resolutions-console-app/coveralls.svg)](https://src.run/satisfactory-resolutions-console-app/coveralls) | [![Coveralls](https://src.run/satisfactory-resolutions-console-app/styleci.svg)](https://src.run/satisfactory-resolutions-console-app/styleci) | [![Packagist](https://src.run/satisfactory-resolutions-console-app/packagist.svg)](https://src.run/satisfactory-resolutions-console-app/packagist) | [![API Docs](https://src.run/satisfactory-resolutions-console-app/api.svg)](https://src.run/satisfactory-resolutions-console-app/api) | 
