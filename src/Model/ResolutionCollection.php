@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the `robfrawley/satisfactory-settings-console-app` project.
+ * This file is part of the `robfrawley/satisfactings-application` project.
  *
  * (c) Rob Frawley 2nd <rmf@src.run>
  *
@@ -9,25 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Satisfactory\Model;
+namespace Satisfactings\Model;
 
+/**
+ * Class ResolutionCollection
+ */
 class ResolutionCollection implements \Countable, \IteratorAggregate
 {
-    /**
-     * @var string[]
-     */
-    public const ORDER_TYPES = [
-        self::ORDER_TYPE_X,
-        self::ORDER_TYPE_X_ASC,
-        self::ORDER_TYPE_X_DES,
-        self::ORDER_TYPE_Y,
-        self::ORDER_TYPE_Y_ASC,
-        self::ORDER_TYPE_Y_DES,
-        self::ORDER_TYPE_R,
-        self::ORDER_TYPE_R_ASC,
-        self::ORDER_TYPE_R_DES,
-    ];
-
     /**
      * @var string
      */
@@ -79,9 +67,12 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     private array $resolutions = [];
 
     /**
+     * ResolutionCollection constructor.
+     *
      * @param Resolution ...$resolutions
      */
-    public function __construct(Resolution ...$resolutions) {
+    public function __construct(Resolution ...$resolutions)
+    {
         $this->resolutions = $resolutions;
     }
 
@@ -98,8 +89,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param string|null $filterX
-     *
      * @return $this
      */
     public function filterX(string $filterX = null): self
@@ -114,8 +103,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param string|null $filterY
-     *
      * @return $this
      */
     public function filterY(string $filterY = null): self
@@ -130,8 +117,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param string|null $filterR
-     *
      * @return $this
      */
     public function filterR(string $filterR = null): self
@@ -182,9 +167,7 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
                     break;
 
                 default:
-                    throw new \RuntimeException(
-                        sprintf('Invalid resolution ordering type: "%s".', $t)
-                    );
+                    throw new \RuntimeException(sprintf('Invalid resolution ordering type: "%s".', $t));
             }
         }
 
@@ -192,8 +175,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param bool $des
-     *
      * @return $this
      */
     public function orderByX(bool $des = false): self
@@ -208,8 +189,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param bool $des
-     *
      * @return $this
      */
     public function orderByY(bool $des = false): self
@@ -224,8 +203,6 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @param bool $des
-     *
      * @return $this
      */
     public function orderByR(bool $des = false): self
@@ -239,25 +216,16 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
         return $this;
     }
 
-    /**
-     * @param \Closure $closure
-     *
-     * @return mixed[]
-     */
-    public function map(\Closure $closure): array  {
+    public function map(\Closure $closure): array
+    {
         return array_map($closure, $this->resolutions);
     }
 
-    /**
-     * @return int
-     */
-    public function count(): int {
-        return count($this->resolutions);
+    public function count(): int
+    {
+        return \count($this->resolutions);
     }
 
-    /**
-     * @return \ArrayIterator
-     */
     public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->resolutions);
@@ -266,7 +234,8 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     /**
      * @return int[]
      */
-    public function getXArray(): array {
+    public function getXArray(): array
+    {
         return array_map(function (Resolution $r): int {
             return $r->getX();
         }, $this->resolutions);
@@ -275,7 +244,8 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     /**
      * @return int[]
      */
-    public function getYArray(): array {
+    public function getYArray(): array
+    {
         return array_map(function (Resolution $r): int {
             return $r->getY();
         }, $this->resolutions);
@@ -284,62 +254,80 @@ class ResolutionCollection implements \Countable, \IteratorAggregate
     /**
      * @return float[]
      */
-    public function getRArray(): array {
+    public function getRArray(): array
+    {
         return array_map(function (Resolution $r): float {
             return $r->getR();
         }, $this->resolutions);
     }
 
-    /**
-     * @return int
-     */
-    public function getXMax(): int {
+    public function getXMax(): int
+    {
         return max($this->getXArray());
     }
 
-    /**
-     * @return int
-     */
-    public function getYMax(): int {
+    public function getYMax(): int
+    {
         return max($this->getYArray());
     }
 
-    /**
-     * @return float
-     */
-    public function getRMax(): float {
+    public function getRMax(): float
+    {
         return max($this->getRArray());
     }
 
-    /**
-     * @return int
-     */
-    public function getXMaxLen(): int {
+    public function getXMaxLen(): int
+    {
         return $this->getMaxLen($this->getXArray());
     }
 
-    /**
-     * @return int
-     */
-    public function getYMaxLen(): int {
+    public function getYMaxLen(): int
+    {
         return $this->getMaxLen($this->getYArray());
     }
 
-    /**
-     * @return int
-     */
-    public function getRMaxLen(): int {
+    public function getRMaxLen(): int
+    {
         return $this->getMaxLen($this->getRArray());
     }
 
     /**
-     * @param array $values
-     *
-     * @return int
+     * @return string[]
      */
-    private function getMaxLen(array $values): int {
+    public static function getOrderTypes(): array
+    {
+        return [
+            self::ORDER_TYPE_X,
+            self::ORDER_TYPE_X_ASC,
+            self::ORDER_TYPE_X_DES,
+            self::ORDER_TYPE_Y,
+            self::ORDER_TYPE_Y_ASC,
+            self::ORDER_TYPE_Y_DES,
+            self::ORDER_TYPE_R,
+            self::ORDER_TYPE_R_ASC,
+            self::ORDER_TYPE_R_DES,
+        ];
+    }
+
+    public static function stringifyOrderTypes(string $format = null, string $joiner = null): string
+    {
+        return implode($joiner ?? ', ', self::mapFormatOrderTypes($format));
+    }
+
+    /**
+     * @return array
+     */
+    private static function mapFormatOrderTypes(string $format = null)
+    {
+        return array_map(function (string $t) use ($format): string {
+            return sprintf($format ?? '"%s"', $t);
+        }, self::getOrderTypes());
+    }
+
+    private function getMaxLen(array $values): int
+    {
         return max(array_map(function (string $v): int {
-            return strlen($v);
+            return mb_strlen($v);
         }, $values));
     }
 }

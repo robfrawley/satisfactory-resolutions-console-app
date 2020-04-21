@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ This file is part of the `robfrawley/satisfactings` project.
+  ~
+  ~ (c) Rob Frawley 2nd <rmf@src.run>
+  ~
+  ~ For the full copyright and license information, please view the LICENSE.md
+  ~ file that was distributed with this source code.
+  -->
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.0/phpunit.xsd"
+         bootstrap="tests/.bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         verbose="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="robfrawley/satisfactings">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+        <listener class="Symfony\Bridge\PhpUnit\CoverageListener" />
+    </listeners>
+
+    <logging>
+        <log type="coverage-html" target="var/build/coverage/"/>
+        <log type="coverage-clover" target="var/build/clover.xml"/>
+    </logging>
+
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <ini name="intl.default_locale" value="en" />
+        <ini name="intl.error_level" value="0" />
+        <ini name="memory_limit" value="-1" />
+    </php>
+</phpunit>

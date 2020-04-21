@@ -1,5 +1,8 @@
 /.idea/
-
 /vendor/
-/bin/
-!/bin/satisfactory-settings
+/var/
+/bin/*
+!/bin/satisfactings
+!/bin/satisfactings.bat
+/.php_cs.cache
+/.phpunit.result.cache

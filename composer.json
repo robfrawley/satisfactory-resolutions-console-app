@@ -1,15 +1,15 @@
 {
-    "name": "robfrawley/satisfactory-resolutions-console-app",
+    "name": "robfrawley/satisfactings-application",
     "license": "MIT",
     "type": "project",
-    "homepage": "https://src.run/satisfactory-resolutions-console-app",
+    "homepage": "https://src.run/satisfactings-application",
     "description": "Displays and filters the x and y resolution values and their ratio for the game Satisfactory.",
     "support": {
         "email": "rmf@src.run",
-        "issues": "https://src.run/satisfactory-resolutions-console-app/issues",
-        "source": "https://src.run/satisfactory-resolutions-console-app/git"
+        "issues": "https://src.run/satisfactings-application/issues",
+        "source": "https://src.run/satisfactings-application/git"
     },
-    "keywords": [ "satisfactory-resolutions-console-app", "satisfactory", "resolutions", "console", "app", "rmf", "src-run" ],
+    "keywords": [ "satisfactings-application", "satisfactory", "resolutions", "console", "app", "rmf", "robfrawley" ],
     "authors": [
         {
             "name": "Rob Frawley 2nd",
@@ -26,28 +26,36 @@
         "symfony/yaml": "^5.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12.18",
+        "php-coveralls/php-coveralls": "^2.2",
         "symfony/debug": "^4.4",
         "symfony/phpunit-bridge": "^5.0",
         "symfony/var-dumper": "^5.0"
     },
     "autoload": {
         "psr-4": {
-            "Satisfactory\\": "src/"
+            "Satisfactings\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Satisfactory\\Tests\\": "tests/"
+            "Satisfactings\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.1-dev"
         }
+    },
+    "scripts": {
+        "cfix": "./vendor/bin/php-cs-fixer fix .",
+        "stan": "./vendor/bin/phpstan analyse ./src --level=max",
+        "test": "./vendor/bin/simple-phpunit",
+        "w-cfix": "vendor\\bin\\php-cs-fixer fix .",
+        "w-stan": "vendor\\bin\\phpstan analyse ./src --level=max",
+        "w-unit": "vendor\\bin\\simple-phpunit"
     }
 }
